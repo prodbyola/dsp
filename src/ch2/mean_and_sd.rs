@@ -1,4 +1,4 @@
-use super::ext::ext::Sample;
+use super::ext::sample::Sample;
 
 /// Calculates mean
 pub fn arithmetic_mean<T: Sample>(samples: &[T]) -> f64 {

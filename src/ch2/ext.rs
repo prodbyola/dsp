@@ -1,4 +1,4 @@
-pub mod ext {
+pub mod sample {
     pub trait Sample: Sized + Copy + Default {
         fn from(&self) -> Self;
         fn into_usize(&self) -> usize;
