@@ -5,7 +5,7 @@ pub mod sample {
         fn into_f64(&self) -> f64;
     }
 
-    /// We use this macro to generate code that's responsible for implementing
+    /// We use this macro to generate codes responsible for implementing
     /// `Sample` trait for all numeric type.
     macro_rules! impl_sample_for_numeric {
         ($($t:ty),*) => {

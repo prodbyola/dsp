@@ -1,4 +1,4 @@
-use ch2::mean_and_sd::{arithmetic_mean, standard_deviation, RS};
+use ch2::running_statistics::{arithmetic_mean, standard_deviation, RS};
 
 mod ch2;
 

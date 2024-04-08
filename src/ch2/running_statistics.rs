@@ -31,7 +31,7 @@ pub fn standard_deviation<T: Sample>(samples: &[T]) -> f64 {
     v.sqrt()
 }
 
-/// For previous implementation of standard deviation procedure, we could get excessive 
+/// For my previous implementation of standard deviation procedure, we could get excessive 
 /// round-off error if the mean is much larger than the standard deviation.
 /// Also, it's a good idea to keep track of some parameters such as the total number of samples processed (`tsp`),
 /// the `sum` of `tsp` and the sum of squared `tsp`, in order to get a "real-time" feedback on what's going on 
@@ -96,7 +96,7 @@ impl<T: Sample> RS<T> {
             let sos = self.sum_of_squares + s.into_f64().powi(2);
     
             self.mean = sum / n; // mean
-            let v = (sos - (sum as f64) / n) / n - 1.0; // variance
+            let v = (sos - (sum as f64).powi(2) / n) / n - 1.0; // variance
             self.sd = v.sqrt();
     
             self.tsp = n as usize;
@@ -112,7 +112,7 @@ mod test {
     use super::{standard_deviation, arithmetic_mean, RS};
 
     #[test]
-    fn test_sd() {
+    fn test_running_statistics() {
         let data = vec![100, 12, 34, 73];
 
         assert_eq!(arithmetic_mean(&data), 54.75);
@@ -122,12 +122,12 @@ mod test {
         
         assert_eq!(rs.tsp, 4);
         assert_eq!(rs.mean, 54.75);
-        assert_eq!(rs.sd, 64.36274155130435);
+        assert_eq!(rs.sd, 34.03949911499874);
         
         rs.add_samples(vec![70, 22, 70, 35, 62], true);
         assert_eq!(rs.tsp, 9);
         assert_eq!(rs.mean, 53.111111111111114);
-        assert_eq!(rs.sd, 59.553793506271745);
+        assert_eq!(rs.sd, 27.051163230049195);
 
         rs.add_sample(240, true);
         assert_eq!(rs.tsp, 10);

@@ -1,2 +1,2 @@
-pub mod mean_and_sd;
+pub mod running_statistics;
 mod ext;
