@@ -1,6 +1,7 @@
 use ch2::running_statistics::{arithmetic_mean, standard_deviation, RS};
 
 mod ch2;
+mod algos;
 
 fn main() {
     let data: Vec<u8> = vec![100, 12, 34, 73];
